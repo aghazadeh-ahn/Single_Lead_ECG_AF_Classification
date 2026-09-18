@@ -1,2 +1,13 @@
-/dataset/dl_data
-.venv_gpu
+dataset/raw_data/
+dataset/dl_data/
+.venv_gpu/
+dataset_selected/raw_data/
+dataset_selected/dl_data/
+data/raw/
+
+
+
+
+  experiments/checkpoints/*.pt
+  experiments/checkpoints/*.pth
+  experiments/logs/
