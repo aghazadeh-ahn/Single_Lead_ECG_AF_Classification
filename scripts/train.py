@@ -17,6 +17,11 @@ def get_model_instance(model_name: str, num_classes: int = len(CLASSES)) -> nn.M
     if model_name in ["baseline", "baseline_cnn", "cnn"]:
         from src.models.baseline_cnn import Baseline1DCNN
         return Baseline1DCNN(num_classes=num_classes)
+
+    if model_name in ["resnet", "resnet1d"]:
+        from src.models.resnet1d import ResNet1D
+        return ResNet1D(num_classes=num_classes)
+
     raise ValueError(f"Unknown model name: '{model_name}'")
 
 def compute_class_weights(train_dataset, device):
