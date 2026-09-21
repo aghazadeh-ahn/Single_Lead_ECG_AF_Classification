@@ -59,6 +59,20 @@ NOTCH_Q = 30.0          # Quality factor for Notch filter
 # Normalization
 NORMALIZATION_METHOD = "z_score"  # Options: 'z_score', 'min_max', None
 
+# Training-time augmentation (applied after normalize + length adjust)
+USE_AUGMENTATION = True
+AUG_PROB = 0.5
+AUG_NOISE_STD = 0.05
+AUG_SCALE_MIN = 0.9
+AUG_SCALE_MAX = 1.1
+AUG_BASELINE_AMP = 0.1
+AUG_TIME_STRETCH_MIN = 0.9
+AUG_TIME_STRETCH_MAX = 1.1
+
+# Test-time augmentation (sliding-window logit averaging)
+TTA_WINDOW_LENGTH = TARGET_LENGTH
+TTA_STRIDE = SAMPLING_RATE * 15  # 15 s overlap step (50% for 30 s windows)
+
 # ==========================================
 # 3. Class Definitions & Mappings
 # ==========================================
@@ -93,6 +107,10 @@ WEIGHT_DECAY = 1e-4
 EPOCHS = 40
 NUM_EPOCHS = EPOCHS
 EARLY_STOPPING_PATIENCE = 10
+
+# Cosine Annealing LR
+USE_COSINE_LR = True
+MIN_LR = 1e-6
 
 # Class weights for Cross-Entropy Loss
 CLASS_WEIGHTS = torch.tensor([0.42, 2.80, 0.88, 7.55], dtype=torch.float32)
